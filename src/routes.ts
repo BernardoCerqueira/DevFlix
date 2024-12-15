@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { categoriesController } from "./controllers/categoriesController";
 import { coursesController } from "./controllers/coursesController";
+import { episodesController } from "./controllers/episodesController";
 
 const router = Router()
 
@@ -12,4 +13,6 @@ router.get('/courses/newest', coursesController.newest)
 router.get('/courses/search', coursesController.search)
 router.get('/courses/:id', coursesController.show)
 
-export {router}
+router.get('/episodes/stream', episodesController.stream)
+
+export { router }
