@@ -25,7 +25,6 @@ export function ensureAuth(req: AuthenticatedRequest, res: Response, next: NextF
         const user = await userService.findByEmail((decoded as JwtPayload).email)
         req.user = user
         next()
-        
     })
 }
 
