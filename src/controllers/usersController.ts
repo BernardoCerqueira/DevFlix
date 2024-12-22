@@ -37,6 +37,11 @@ export const usersController = {
         }
     },
 
+    //PUT /users/current/password
+    updatePassword: async(req: AuthenticatedRequest, res: Response) => {
+
+    },
+
     // GET /users/current/watching
     watching: async (req: AuthenticatedRequest, res: Response) => {
         const { id } = req.user!
