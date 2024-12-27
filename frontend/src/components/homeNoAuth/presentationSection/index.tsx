@@ -28,10 +28,13 @@ const PresentationSection = function (){
                 </Row>
                 <Row>
                     <Col className="d-flex justify-content-center pt-5">
+                    <Link href="#cardsSection">
                         <img
                             src="/homeNoAuth/iconArrowDown.svg"
                             alt="arrowDown"
-                            className={styles.arrowDown} />
+                            className={styles.arrowDown} 
+                        />
+                    </Link>
                     </Col>
                 </Row>
             </Container>

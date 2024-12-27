@@ -21,7 +21,9 @@ const HomeNoAuth = () => {
           <HeaderNoAuth/>
           <PresentationSection/>
         </div>
-        <CardsSection/>
+        <div id="cardsSection">
+          <CardsSection/>
+        </div>
       </main>
     </>
   )
