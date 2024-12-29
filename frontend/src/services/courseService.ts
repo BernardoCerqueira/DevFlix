@@ -18,15 +18,18 @@ export type CourseType = {
 }
 
 const courseService = {
-    getNewestCourses: async () => {
-        const res = await api.get("/courses/newest").catch((error) => {
-            console.log(error.response.data.message)
-
-            return error.response
-        })
-
-        return res
-    }
+    getNewestCourses: async (): Promise<CourseType[] | null> => {
+        try {
+          const res = await api.get("/courses/newest")
+          return res.data
+        } catch (error: any) {
+          console.error(
+            "Erro ao buscar os cursos mais recentes:",
+            error.response?.data?.message || error.message
+          )
+          return null
+        }
+      },
 }
 
 export default courseService
