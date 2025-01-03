@@ -3,10 +3,16 @@ import styles from "../styles/registerLogin.module.scss";
 import Head from "next/head";
 import {Container, Button, Form, FormGroup, Label, Input} from "reactstrap"
 import Footer from "@/components/common/footer";
-import {FormEvent} from "react"
+import {FormEvent, useState} from "react"
 import authService from "@/services/authService";
+import {useRouter} from "next/router"
+import ToastComponent from "@/components/common/toast";
 
 const Register = function () {
+    const router = useRouter()
+
+    const [toastIsOpen, setToastIsOpen] = useState(false)
+    const [toastMessage, setToastMessage] = useState("")
 
     const handleRegister = async(event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -22,16 +28,29 @@ const Register = function () {
         const params = {firstName, lastName, phone, birth, email, password, confirmPassowrd}
 
         if(password !== confirmPassowrd){
-            alert("As senhas são diferentes. Por favor, tente novamente.")
+            setToastIsOpen(true)
+
+            setTimeout(() => {
+                setToastIsOpen(false)
+            }, 1000 * 3)
+
+            setToastMessage("As senhas estão diferentes. Por favor, tente novamente.")
+
             return
         }
 
         const {data, status} = await authService.register(params)
         
         if(status === 201){
-            alert("Sucesso no cadastro!")
+            router.push("/login?registred=true")
         }else{
-            alert(data.message)
+            setToastIsOpen(true)
+
+            setTimeout(() => {
+                setToastIsOpen(false)
+            }, 1000 * 3)
+            
+            setToastMessage(data.message)
         }
     }
 
@@ -163,6 +182,11 @@ const Register = function () {
                     </Form>
                 </Container>
                 <Footer/>
+                <ToastComponent
+                    color="bg-danger"
+                    isOpen={toastIsOpen}
+                    message={toastMessage}
+                />
             </main>
         </>
     )
