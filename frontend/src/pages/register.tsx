@@ -1,11 +1,11 @@
 import HeaderGeneric from "@/components/common/headerGeneric";
 import styles from "../styles/registerLogin.module.scss";
 import Head from "next/head";
-import {Container, Button, Form, FormGroup, Label, Input} from "reactstrap"
+import { Container, Button, Form, FormGroup, Label, Input } from "reactstrap"
 import Footer from "@/components/common/footer";
-import {FormEvent, useState} from "react"
+import { FormEvent, useEffect, useState } from "react"
 import authService from "@/services/authService";
-import {useRouter} from "next/router"
+import { useRouter } from "next/router"
 import ToastComponent from "@/components/common/toast";
 
 const Register = function () {
@@ -14,7 +14,13 @@ const Register = function () {
     const [toastIsOpen, setToastIsOpen] = useState(false)
     const [toastMessage, setToastMessage] = useState("")
 
-    const handleRegister = async(event: FormEvent<HTMLFormElement>) => {
+    useEffect(() => {
+        if (sessionStorage.getItem("onebitflix-token")) {
+            router.push("/home")
+        }
+    }, [])
+
+    const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
         const formData = new FormData(event.currentTarget)
@@ -25,9 +31,9 @@ const Register = function () {
         const email = formData.get("email")!.toString()
         const password = formData.get("password")!.toString()
         const confirmPassowrd = formData.get("confirmPassword")!.toString()
-        const params = {firstName, lastName, phone, birth, email, password, confirmPassowrd}
+        const params = { firstName, lastName, phone, birth, email, password, confirmPassowrd }
 
-        if(password !== confirmPassowrd){
+        if (password !== confirmPassowrd) {
             setToastIsOpen(true)
 
             setTimeout(() => {
@@ -39,17 +45,17 @@ const Register = function () {
             return
         }
 
-        const {data, status} = await authService.register(params)
-        
-        if(status === 201){
+        const { data, status } = await authService.register(params)
+
+        if (status === 201) {
             router.push("/login?registred=true")
-        }else{
+        } else {
             setToastIsOpen(true)
 
             setTimeout(() => {
                 setToastIsOpen(false)
             }, 1000 * 3)
-            
+
             setToastMessage(data.message)
         }
     }
@@ -177,11 +183,11 @@ const Register = function () {
                             outline
                             className={styles.formBtn}
                         >
-                                CADASTRAR
+                            CADASTRAR
                         </Button>
                     </Form>
                 </Container>
-                <Footer/>
+                <Footer />
                 <ToastComponent
                     color="bg-danger"
                     isOpen={toastIsOpen}
