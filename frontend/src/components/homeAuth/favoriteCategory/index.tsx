@@ -1,4 +1,5 @@
 import SlideComponent from "@/components/common/slideComponent"
+import PageSpinner from "@/components/common/spinner"
 import courseService from "@/services/courseService"
 import styles from "@/styles/slideCategory.module.scss"
 import useSWR from "swr"
@@ -7,11 +8,11 @@ const FavoriteCategory = function(){
     const { data, error } = useSWR("/favorites", courseService.getFavCourse)
 
     if (error) return error
-    if (!data) return (
-        <>
-            <p>Loading...</p>
-        </>
-    )
+    if (!data) {
+        return(
+            <PageSpinner/>
+        )
+    }
 
     return(
         <>
