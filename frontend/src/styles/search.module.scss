@@ -3,15 +3,15 @@
     flex-direction: column;
 }
 
-.searchResult{
-    flex: 1 0 auto;
-}
-
 .noSearchResult{
     text-align: center;
     padding: 20px;
     font-size: 24px;
     font-weight: bold;
+}
+
+.searchContainer{
+    flex: 1 0 auto;
 }
 
 .headerFooterBg{

@@ -71,7 +71,7 @@ const HeaderAuth = function(){
                         />
                     </Form>
                     <img
-                        src="homeAuth/iconSearch.svg"
+                        src="/homeAuth/iconSearch.svg"
                         alt="searchIcon"
                         className={styles.searchImg}
                         onClick={handleSearchClick}

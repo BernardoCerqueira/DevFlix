@@ -1,8 +1,12 @@
 @use "../../../styles/colors.module.scss";
 
+.link{
+    text-decoration: none;
+}
+
 .slide{
     width: 280px;
-    height: 308px;
+    height: 310px;
     border: 1px solid colors.$darkGray;
     cursor: pointer;
     transition: 0.3s;
@@ -20,6 +24,7 @@
 .slideImg{
     width: 100%;
     height: 170px;
+    color: colors.$darkGray;
 }
 
 .slideTitle{
