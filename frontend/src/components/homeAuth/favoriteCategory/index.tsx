@@ -21,7 +21,7 @@ const FavoriteCategory = function(){
                 <SlideComponent course={data.data.courses}/>
             ) : (
                 <p className="text-center pt-5 h5">
-                    <strong>Você ainda não favoritou nenhum curso.</strong>
+                    <strong>Você ainda não possui cursos favoritos.</strong>
                 </p>
             ) }
         </>
