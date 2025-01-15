@@ -5,6 +5,8 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { Button, Container } from "reactstrap"
+import PageSpinner from "@/components/common/spinner"
+import EpisodeList from "@/components/episodeList"
 
 const CoursePage = function () {
     const [course, setCourse] = useState<CourseType>()
@@ -53,6 +55,8 @@ const CoursePage = function () {
             setFavorited(true)
         }
     }
+
+    if(course === undefined) return <PageSpinner/>
 
     return (
         <>
@@ -113,6 +117,15 @@ const CoursePage = function () {
                         />
                         }
                     </div>
+                </Container>
+                <Container className={styles.episodeInfo}>
+                        <p className={styles.episodeDivision}>EPISÓDIOS</p>
+                        <p className={styles.episodeLength}>
+                            {course.episodes?.length} episódios
+                        </p>
+                        {course.episodes?.map((episode) => (
+                            <EpisodeList key={episode.id} episode={episode}/>
+                        ))}
                 </Container>
             </main>
         </>
