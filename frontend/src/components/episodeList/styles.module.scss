@@ -46,3 +46,23 @@
     color: colors.$lightGray;
 }
 
+@media screen and (max-width: 570px) {
+    .episodeCard{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 470px){
+    .episodeOrderTime{
+        gap: 25px;
+    }
+
+    .episodeTitle{
+        font-size: 18px;
+    }
+    
+    .episodeDescription{
+        word-break: break-all;
+        font-size: 14px;
+    }
+}

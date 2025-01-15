@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import { Button, Container } from "reactstrap"
 import PageSpinner from "@/components/common/spinner"
 import EpisodeList from "@/components/episodeList"
+import Footer from "@/components/common/footer"
 
 const CoursePage = function () {
     const [course, setCourse] = useState<CourseType>()
@@ -78,7 +79,11 @@ const CoursePage = function () {
                 <Container className={styles.courseInfo}>
                     <p className={styles.courseTitle}>{course?.name}</p>
                     <p className={styles.courseDescription}>{course?.synopsis}</p>
-                    <Button outline className={styles.courseBtn}>
+                    <Button
+                        outline
+                        className={styles.courseBtn}
+                        disabled={course?.episodes?.length === 0 ? true : false}
+                    >
                         ASSISTIR AGORA!
                         <img
                             src="/buttonPlay.svg"
@@ -123,10 +128,23 @@ const CoursePage = function () {
                         <p className={styles.episodeLength}>
                             {course.episodes?.length} episódios
                         </p>
-                        {course.episodes?.map((episode) => (
-                            <EpisodeList key={episode.id} episode={episode}/>
-                        ))}
+                        {course.episodes?.length === 0
+                        ? (
+                            <p>
+                                <strong>
+                                    Não temos episódios ainda. Por favor, tente novamente mais tarde. &#x1F918;
+                                </strong>
+                            </p>
+                        )
+                        : (
+                            course.episodes?.map((episode) => (
+                                <EpisodeList key={episode.id} episode={episode}/>
+                            ))
+                        )}
                 </Container>
+                <div className={styles.footer}>
+                    <Footer/>
+                </div>
             </main>
         </>
     )
