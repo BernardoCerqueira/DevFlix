@@ -25,6 +25,14 @@ const EpisodePlayer = function(){
         }
     }
 
+    const handleLastEpisode = () => {
+        router.push(`/course/episode/${episodeOrder - 1}?courseid=${course?.id}`)
+    }
+
+    const handleNextEpisode = () => {
+        router.push(`/course/episode/${episodeOrder + 1}?courseid=${course?.id}`)
+    }
+
     useEffect(() => {
         getCourse()
     }, [courseId])
@@ -54,15 +62,23 @@ const EpisodePlayer = function(){
                             controls
                         />
                     )}
-                    <div className={styles.episodeButton}>
-                        <Button className={styles.episodeButton}>
+                    <div className={styles.episodeButtonDiv}>
+                        <Button
+                            className={styles.episodeButton}
+                            disabled={episodeOrder === 0 ? true : false}
+                            onClick={handleLastEpisode}
+                        >
                             <img
                                 src="/episode/iconArrowLeft.svg"
                                 alt="setaEsquerda"
                                 className={styles.arrowImg}
                             />
                         </Button>
-                        <Button className={styles.episodeButton}>
+                        <Button
+                            className={styles.episodeButton}
+                            disabled={episodeOrder + 1 === course.episodes.length ? true : false}
+                            onClick={handleNextEpisode}
+                        >
                             <img
                                 src="/episode/iconArrowRight.svg"
                                 alt="setaDireita"
@@ -70,6 +86,9 @@ const EpisodePlayer = function(){
                             />
                         </Button>
                     </div>
+                    <p className="text-center py-4">
+                        {course.episode[episodeOrder].synopsis}
+                    </p>
                 </Container>
             </main>
         </>
