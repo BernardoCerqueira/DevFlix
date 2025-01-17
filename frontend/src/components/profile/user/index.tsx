@@ -20,7 +20,7 @@ const UserForm = function(){
     const [createdAt, setCreatedAt] = useState("")
 
     const date = new Date(createdAt)
-    const month = date.toLocaleDateString("default", {month: "long"})
+    const month = date.toLocaleDateString("default", {month: "2-digit"})
 
     useEffect(() => {
         profileService.fetchCurrent().then((user) => {
@@ -88,7 +88,7 @@ const UserForm = function(){
                     />
                     <p className={styles.memberText}>
                         Membro desde <br />
-                        {`${date.getDate()} de ${month} de ${date.getFullYear()}`}
+                        {`${date.getDate()}/${month}/${date.getFullYear()}`}
                     </p>
                 </div>
                 <hr />
