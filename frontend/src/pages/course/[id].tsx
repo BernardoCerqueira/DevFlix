@@ -8,6 +8,7 @@ import { Button, Container } from "reactstrap"
 import PageSpinner from "@/components/common/spinner"
 import EpisodeList from "@/components/episodeList"
 import Footer from "@/components/common/footer"
+import watchEpisodeService from "@/services/episodeService"
 
 const CoursePage = function () {
     const [course, setCourse] = useState<CourseType>()
@@ -73,13 +74,19 @@ const CoursePage = function () {
         }
     }
 
-    const handleWatch = () => {
+    const handleWatch = async() => {
         if(course === undefined) return
         if(course.episodes === undefined) return
 
-        const episodeId = course.episodes[0].id
+        try {
+            const res = await watchEpisodeService.getLastEpisodeWatched(course.id)
+            const episode = res.episodeIndex
+            const episodeId = course.episodes[episode].id
 
-        router.push(`/course/episode/0?courseid=${course?.id}&episodeid=${episodeId}`)
+            router.push(`/course/episode/${episode}?courseid=${course?.id}&episodeid=${episodeId}`)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     if(course === undefined) return <PageSpinner/>

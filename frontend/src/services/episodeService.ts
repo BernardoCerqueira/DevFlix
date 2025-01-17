@@ -36,6 +36,20 @@ const watchEpisodeService = {
   
         return res
       },
+
+      getLastEpisodeWatched: async(courseId: number) => {
+        const token = sessionStorage.getItem("onebitflix-token")
+
+        const res = await api.get(`/episodes/${courseId}/lastEpisodeWatched`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }).catch((error) => {
+          return error.response
+        })
+
+        return res.data
+      }
 }
 
 export default watchEpisodeService

@@ -24,6 +24,7 @@ router.get('/courses/:id', ensureAuth, coursesController.show)
 
 router.get('/episodes/stream', ensureAuthViaQuery, episodesController.stream)
 
+router.get('/episodes/:courseId/lastEpisodeWatched', ensureAuth, episodesController.lastEpisodeWatched)
 router.get('/episodes/:id/watchTime', ensureAuth, episodesController.getWatchTime)
 router.post('/episodes/:id/watchTime', ensureAuth, episodesController.setWatchTime)
 
