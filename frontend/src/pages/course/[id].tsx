@@ -73,6 +73,15 @@ const CoursePage = function () {
         }
     }
 
+    const handleWatch = () => {
+        if(course === undefined) return
+        if(course.episodes === undefined) return
+
+        const episodeId = course.episodes[0].id
+
+        router.push(`/course/episode/0?courseid=${course?.id}&episodeid=${episodeId}`)
+    }
+
     if(course === undefined) return <PageSpinner/>
 
     if(loading){
@@ -103,6 +112,7 @@ const CoursePage = function () {
                         outline
                         className={styles.courseBtn}
                         disabled={course?.episodes?.length === 0 ? true : false}
+                        onClick={handleWatch}
                     >
                         ASSISTIR AGORA!
                         <img
