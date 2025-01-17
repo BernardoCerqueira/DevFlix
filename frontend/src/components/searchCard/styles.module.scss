@@ -6,7 +6,7 @@
 
 .searchCard{
     width: 320px;
-    height: 345px;
+    height: 405px;
     border: 1px solid colors.$darkGray;
     overflow: hidden;
     text-overflow: clip;
@@ -20,9 +20,9 @@
     }
 }
 
-.searchImg{
+.searchCardImg{
     width: 100%;
-    height: 100px;
+    height: 200px;
 }
 
 .searchCardTitle{

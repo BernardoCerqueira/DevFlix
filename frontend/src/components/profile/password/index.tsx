@@ -25,18 +25,7 @@ const PasswordForm = function () {
 
         if (newPassword != confirmNewPassword) {
             setToastIsOpen(true)
-            setErrorMessage("As senhas estão diferentes. Por favor, tente novamente.")
-            setColor("bg-danger")
-            setTimeout(() => {
-                setToastIsOpen(false)
-            }, 1000 * 3)
-
-            return
-        }
-
-        if(currentPassword === newPassword){
-            setToastIsOpen(true)
-            setErrorMessage("Essa é a sua senha atual!")
+            setErrorMessage("A nova senha e a sua confirmação não são iguais.")
             setColor("bg-danger")
             setTimeout(() => {
                 setToastIsOpen(false)
@@ -65,7 +54,7 @@ const PasswordForm = function () {
 
         if(res === 400) {
             setToastIsOpen(true)
-            setErrorMessage("Senha atual incorreta!")
+            setErrorMessage("Senha atual incorreta.")
             setColor("bg-danger")
             setTimeout(() => {
                 setToastIsOpen(false)

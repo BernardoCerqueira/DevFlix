@@ -19,6 +19,8 @@ const UserForm = function(){
     const [initialEmail, setInitialEmail] = useState(email)
     const [createdAt, setCreatedAt] = useState("")
 
+    const allowedCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Backspace"]
+
     const date = new Date(createdAt)
     const month = date.toLocaleDateString("default", {month: "2-digit"})
 
@@ -136,10 +138,16 @@ const UserForm = function(){
                             type="tel"
                             id="phone"
                             placeholder="(xx) 9xxxx-xxxx"
+                            data-mask="[-]+55 (00) 00000-0000"
                             required
                             className={styles.input}
                             value={phone}
                             onChange={(ev) => setPhone(ev.target.value)}
+                            onKeyDown={(ev) => {
+                                if(!allowedCharacters.includes(ev.key)){
+                                    ev.preventDefault()
+                                }
+                            }}
                         />
                     </FormGroup>
                     <FormGroup>

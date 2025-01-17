@@ -14,6 +14,8 @@ const Register = function () {
     const [toastIsOpen, setToastIsOpen] = useState(false)
     const [toastMessage, setToastMessage] = useState("")
 
+    const allowedCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Backspace"]
+
     useEffect(() => {
         if (sessionStorage.getItem("onebitflix-token")) {
             router.push("/home")
@@ -119,6 +121,11 @@ const Register = function () {
                                 data-mask="[-]+55 (00) 00000-0000"
                                 required
                                 className={styles.input}
+                                onKeyDown={(ev) => {
+                                    if(!allowedCharacters.includes(ev.key)){
+                                        ev.preventDefault()
+                                    }
+                                }}
                             />
                         </FormGroup>
                         <FormGroup>

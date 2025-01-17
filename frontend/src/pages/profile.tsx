@@ -31,6 +31,7 @@ const UserInfo = function(){
             <Head>
                 <title>OneBitFlix - Meus Dados</title>
                 <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
+                <script src="https://jsuites.net/v5/jsuites.js"></script>
             </Head>
             <main className={styles.main}>
                 <div className={styles.header}>
