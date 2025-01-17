@@ -20,7 +20,7 @@ const FavoriteCategory = function(){
             {(data.data.courses.length >= 1) ? (
                 <SlideComponent course={data.data.courses}/>
             ) : (
-                <p className="text-center pt-5 h5">
+                <p className="text-center pt-5 px-3 h5">
                     <strong>Você ainda não possui cursos favoritos.</strong>
                 </p>
             ) }
