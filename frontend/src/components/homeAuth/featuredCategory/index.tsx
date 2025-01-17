@@ -15,7 +15,7 @@ const FeaturedCategory = function(){
     
     return(
         <>
-            <p className={styles.titleCategory}>EM DESTAQUE</p>
+            <p className={styles.titleCategory}>Destaques</p>
             <SlideComponent course={data.data}/>
         </>
     )

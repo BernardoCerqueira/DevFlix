@@ -29,18 +29,25 @@ const CoursePage = function () {
     const getCourse = async function () {
         if (typeof id !== "string") return
 
-        const res = await courseService.getEpisodes(id)
+        try {
+            const res = await courseService.getEpisodes(id)
 
-        if (res.status === 200) {
-            setCourse(res.data)
-            setLiked(res.data.liked)
-            setFavorited(res.data.favorited)
+            if (res.status === 200) {
+                setCourse(res.data)
+                setLiked(res.data.liked)
+                setFavorited(res.data.favorited)
+            }
+        } catch (error) {
+            console.error("Erro ao buscar o curso:", error)
         }
     }
 
     useEffect(() => {
-        getCourse()
-    }, [])
+        if(id){
+            getCourse()
+        }
+
+    }, [id])
 
     const handleLikeCourse = async() => {
         if (typeof id !== "string") return
