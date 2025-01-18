@@ -24,6 +24,12 @@ const EpisodePlayer = function(){
 
     const playerRef = useRef<ReactPlayer>(null)
 
+    useEffect(() => {
+        if (courseId && !isNaN(Number(courseId))) {
+            getCourse();
+        }
+    }, [courseId]);
+
     const handleGetEpisodeTime = async () => {
         const res = await watchEpisodeService.getWatchTime(episodeId)
         if(res.data !== null){
@@ -39,8 +45,10 @@ const EpisodePlayer = function(){
     }
 
     useEffect(() => {
-        handleGetEpisodeTime()
-    }, [router])
+        if(!isNaN(episodeId)){
+            handleGetEpisodeTime()
+        }
+    }, [router, episodeId])
 
     const handlePlayerTime = () => {
         playerRef.current?.seekTo(getEpisodeTime)
@@ -54,13 +62,18 @@ const EpisodePlayer = function(){
     }
 
     const getCourse = async function(){
-        if(typeof courseId !== "string") return
-
-        const res = await courseService.getEpisodes(courseId)
-
-        if(res.status === 200){
-            setCourse(res.data)
-        }
+        if (!courseId || isNaN(Number(courseId))) {
+            console.error("ID do curso inválido ou não fornecido");
+            return;
+          }
+        
+          const res = await courseService.getEpisodes(courseId);
+        
+          if (res.status === 200) {
+            setCourse(res.data);
+          } else {
+            console.error("Erro ao buscar curso:", res.status, res.data);
+          }
     }
 
     const handleLastEpisode = () => {

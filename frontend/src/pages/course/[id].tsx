@@ -83,7 +83,7 @@ const CoursePage = function () {
             const episode = res.episodeIndex
             const episodeId = course.episodes[episode].id
 
-            router.push(`/course/episode/${episode}?courseid=${course?.id}&episodeid=${episodeId}`)
+            router.push(`/course/episode/${episode}?courseid=${course.id}&episodeid=${episodeId}`)
         } catch (error) {
             console.log(error)
         }

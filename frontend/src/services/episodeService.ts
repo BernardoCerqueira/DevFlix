@@ -9,6 +9,10 @@ interface watchTimeParams{
 const watchEpisodeService = {
     getWatchTime: async (episodeId: number) => {
         const token = sessionStorage.getItem("onebitflix-token")
+
+        if (isNaN(episodeId)) {
+          throw new Error("episodeId é inválido");
+        }
   
         const res = await api.get(`/episodes/${episodeId}/watchTime`, {
           headers: {
