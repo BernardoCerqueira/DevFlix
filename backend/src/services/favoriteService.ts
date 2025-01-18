@@ -11,7 +11,7 @@ export const favoriteService = {
                     'id',
                     'name',
                     'synopsis',
-                    ['thumbnail_url', 'thubnailUrl']
+                    ['thumbnail_url', 'thumbnailUrl']
                 ]
             }
         })
