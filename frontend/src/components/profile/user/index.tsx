@@ -57,7 +57,7 @@ const UserForm = function(){
 
             if(email != initialEmail){
                 sessionStorage.clear()
-                router.push("/")
+                router.push("/login")
             }
         } else{
             setToastIsOpen(true)
