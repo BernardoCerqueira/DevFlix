@@ -4,7 +4,7 @@
 
 **OneBitFlix** é uma plataforma de streaming focada em cursos de programação, desenvolvida para proporcionar uma experiência intuitiva tanto para os usuários finais quanto para os administradores.
 
-Os alunos podem explorar os cursos por meio de uma interface agradável e moderna.
+Os alunos podem explorar os cursos por meio de uma interface agradável, moderna e totalmente **responsiva**.
 
 A administração de cursos e episódios é facilitada pelo **AdminJS**, permitindo uma gestão eficiente e sem complicações.
 
