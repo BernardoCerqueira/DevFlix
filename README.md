@@ -72,7 +72,7 @@ https://github.com/user-attachments/assets/ae0de595-eabd-4131-9887-e813ab251cda
 - Na página de **perfil do usuário**, a alteração de senha conta com toda a lógica necessária para ser feita de maneira adequada. Além disso, o input de telefone também tem sua máscara.
 - Na página do **curso**, o botão "ASSISTIR AGORA" leva o usuário diretamente para o último episódio iniciado.
 - Ainda no **curso**, o aluno pode curtir e/ou favoritar (adicionar à "Minha Lista") um episódio.
-- Ao abrir um **episódio** e iniciar o episódio, o vídeo será iniciado de onde o usuário parou da última vez.
+- Ao abrir um **episódio** e iniciá-lo, o vídeo será iniciado de onde o usuário parou da última vez.
 - Ao terminar um **episódio**, o aluno será automaticamente redirecionado para o próximo (caso exista).
 
 ---
