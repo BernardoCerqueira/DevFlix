@@ -51,7 +51,7 @@ https://github.com/user-attachments/assets/53c78e01-1a2b-46f9-a6eb-83ce49bd9b53
 https://github.com/user-attachments/assets/39f02d12-a4ac-423f-badf-47dc09f77993
 
 
-- **Página de Curso:** Visualização detalhada de um curso com seus episódios listados.
+- **Página do Curso:** Visualização detalhada de um curso com seus episódios listados.
 
 
 https://github.com/user-attachments/assets/75a04267-a957-4797-958e-9764553e7f4a
